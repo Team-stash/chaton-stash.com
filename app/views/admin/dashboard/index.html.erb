@@ -1,0 +1,6 @@
+<h1>Dashboard Admin</h1>
+<p>Nombre d'utilisateurs : <%= @users_count %></p>
+<p>Nombre d'items : <%= @items_count %></p>
+<p>Nombre de commandes : <%= @orders_count %></p>
+<%= link_to "Gérer les utilisateurs", admin_users_path, class: "btn btn-primary" %>
+<%= link_to "Gérer les produits", admin_items_path, class: "btn btn-primary" %>
