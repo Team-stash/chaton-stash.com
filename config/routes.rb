@@ -13,6 +13,14 @@ Rails.application.routes.draw do
     post 'add_item/:item_id', to: 'carts#add_item', as: 'add_item'
   end
 
+  scope '/checkout' do
+    post 'create', to: 'checkout#create', as: 'checkout_create'
+    get 'success', to: 'checkout#success', as: 'checkout_success'
+    get 'cancel', to: 'checkout#cancel', as: 'checkout_cancel'
+  end
+
+
+  resources :orders
   resources :orders, only: [:index, :show, :create]
 
   post 'create_order', to: 'orders#create', as: 'create_order'
