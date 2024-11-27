@@ -1,7 +1,9 @@
 class User < ApplicationRecord
+
+  enum :role, %i[visitor admin super_admin], default: :visitor
+
   has_secure_password
   has_one :cart
-  # validates :cart, uniqueness: true
   has_many :orders
   has_many :sessions, dependent: :destroy
   validates :email_address, presence: true, uniqueness: true

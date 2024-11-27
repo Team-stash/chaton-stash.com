@@ -91,7 +91,8 @@ user = User.create!(
   password: "123456",
   password_confirmation: "123456",
   first_name: "Chaton",
-  last_name: "Fan"
+  last_name: "Fan",
+  role: :admin
 )
 puts "User created: #{user.email_address}"
 # # Créer 4 paniers fictifs associés à des utilisateurs
