@@ -71,11 +71,8 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_27_105720) do
     t.string "first_name"
     t.string "last_name"
     t.integer "role", default: 0
-<<<<<<< HEAD
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-=======
->>>>>>> do not use
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
