@@ -40,6 +40,10 @@ class UsersController < ApplicationController
     redirect_to users_path, notice: "Utilisateur supprimé avec succès."
   end
 
+  def admin?
+    is_admin
+  end
+
   private
 
   def user_params
