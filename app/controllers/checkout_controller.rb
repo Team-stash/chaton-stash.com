@@ -24,11 +24,21 @@ class CheckoutController < ApplicationController
   end
 
   def success
-    @session = Stripe::Checkout::Session.retrieve(params[:session_id])
-    @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
+  @session = Stripe::Checkout::Session.retrieve(params[:session_id])
+  @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
 
-    # Logique supplémentaire à implémenter si nécessaire
+  # Récupérer l'Order à partir des métadonnées Stripe
+  order_id = @session.metadata.order_id
+  @order = Order.find(order_id)
+
+  # Mettre à jour le statut de la commande
+  if @payment_intent.status == 'succeeded'
+    @current.session.order.update(status: 'paid')
+    redirect_to orders_path, notice: 'Paiement réussi et commande mise à jour.'
+  else
+    redirect_to orders_path, alert: 'Paiement non réussi, commande non mise à jour.'
   end
+end
 
   def cancel
     # Logique à ajouter en cas d'annulation
