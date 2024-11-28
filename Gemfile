@@ -67,3 +67,5 @@ gem "stripe"
 gem "actionmailer"
 gem "faker"
 gem "dotenv-rails"
+
+gem 'dockerfile-rails', group: :development
