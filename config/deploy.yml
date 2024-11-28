@@ -7,7 +7,7 @@ image: root/chaton_stash
 # Deploy to these servers.
 servers:
   web:
-    - 87.106.162.181
+    - localhost
   # job:
   #   hosts:
   #     - 192.168.0.1
