@@ -11,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[8.0].define(version: 2024_11_27_105720) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_catalog.plpgsql"
+
   create_table "cart_items", force: :cascade do |t|
     t.integer "cart_id", null: false
     t.integer "item_id", null: false
