@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users
   resources :items, only: [:index, :show]
   resources :passwords, param: :token
+  
   resources :pages
 
   resource :cart, only: [:show, :update, :destroy] do
