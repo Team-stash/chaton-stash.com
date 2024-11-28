@@ -13,8 +13,18 @@ Rails.application.routes.draw do
     post 'add_item/:item_id', to: 'carts#add_item', as: 'add_item'
   end
 
+  resources :orders, only: [:index, :show, :create]
 
-  resources :orders
+  post 'create_order', to: 'orders#create', as: 'create_order'
+
+  # resources :orders, only: [:index, :show, :create] do
+  #   collection do
+  #     post 'create', action: :create, as: 'create_order'
+  #   end
+  # end
+  
+
+  resources :checkout
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -3,7 +3,8 @@ class CartsController < ApplicationController
 
   def show
     @cart_items = @cart.cart_items.includes(:item)
-    @total_price = @cart_items.sum { |ci| ci.item.price }
+    @total_price = @cart.total_price
+    # @total_price = @cart_items.sum { |ci| ci.item.price }
     # @total_price = @cart_items.sum { |ci| ci.item.price * (ci.quantity }
   end
 
