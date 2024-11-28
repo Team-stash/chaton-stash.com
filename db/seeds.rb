@@ -30,6 +30,7 @@ require 'faker'
     image_url: Faker::LoremFlickr.image(size: "300x300")
   )
 end
+puts "Article crée: #{Item.count}"
 
 
 # # Créer 4 paniers fictifs associés à des utilisateurs
@@ -122,14 +123,3 @@ puts "User created: #{user.email_address}"
 #     CartItem.create(cart: cart, item: item) # Ou associer à une autre logique pour les commandes
 #   end
 # end
-
-
-
-user = User.create!(
-  email_address: "rails@admin.com",
-  password: "123456",
-  password_confirmation: "123456",
-  first_name: "Chaton",
-  last_name: "Fan"
-)
-puts "User created: #{user.email_address}"
