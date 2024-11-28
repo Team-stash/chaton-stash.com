@@ -1,6 +1,5 @@
 class Admin::DashboardController < ApplicationController
   ApplicationController
-  before_action :authenticate
   before_action :authorize_admin
 
   def index
