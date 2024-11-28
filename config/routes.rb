@@ -42,13 +42,8 @@ get "up" => "rails/health#show", as: :rails_health_check
 # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
-<<<<<<< HEAD
 # Defines the root path route ("/")
 
 root "home#index"
-=======
-  # Defines the root path route ("/")
-  
-  root "home#index"
->>>>>>> 419ba8b35e54291a63205eef177208c4cac232ba
+
 end
