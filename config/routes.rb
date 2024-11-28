@@ -20,18 +20,9 @@ Rails.application.routes.draw do
     get 'cancel', to: 'checkout#cancel', as: 'checkout_cancel'
   end
 
-
-  # resources :orders
-  resources :orders, only: [:index, :show, :create]
-
   post 'create_order', to: 'orders#create', as: 'create_order'
-
-  # resources :orders, only: [:index, :show, :create] do
-  #   collection do
-  #     post 'create', action: :create, as: 'create_order'
-  #   end
-  # end
   
+  resources :orders, only: [:index, :create, :show]
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

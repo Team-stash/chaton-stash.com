@@ -1,5 +1,8 @@
 class CheckoutController < ApplicationController
+
   def create
+    @order = Order.find(params[:order_id])
+
     @total = (params[:total].to_d * 100).to_i # Convertir en centimes
 
     session = Stripe::Checkout::Session.create(
@@ -8,7 +11,7 @@ class CheckoutController < ApplicationController
         {
           price_data: {
             currency: 'eur',
-            unit_amount: @total, # Montant en centimes
+            unit_amount: @total,
             product_data: {
               name: 'Rails Stripe Checkout',
             },
@@ -17,30 +20,31 @@ class CheckoutController < ApplicationController
         }
       ],
       mode: 'payment',
-      success_url: checkout_success_url + '?session_id={CHECKOUT_SESSION_ID}',
-      cancel_url: checkout_cancel_url
+      success_url: "#{checkout_success_url}?session_id={CHECKOUT_SESSION_ID}&order_id=#{@order.id}",
+
+      cancel_url: checkout_cancel_url,
+      metadata: {
+        order_id: @order.id
+      }
     )
     redirect_to session.url, allow_other_host: true
   end
 
   def success
-  @session = Stripe::Checkout::Session.retrieve(params[:session_id])
-  @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
+    @session = Stripe::Checkout::Session.retrieve(params[:session_id])
+    @order = Order.find(params[:order_id])
+    @payment_intent = Stripe::PaymentIntent.retrieve(@session.payment_intent)
 
-  # Récupérer l'Order à partir des métadonnées Stripe
-  order_id = @session.metadata.order_id
-  @order = Order.find(order_id)
-
-  # Mettre à jour le statut de la commande
-  if @payment_intent.status == 'succeeded'
-    @current.session.order.update(status: 'paid')
-    redirect_to orders_path, notice: 'Paiement réussi et commande mise à jour.'
-  else
-    redirect_to orders_path, alert: 'Paiement non réussi, commande non mise à jour.'
+    if @payment_intent.status == 'succeeded'
+      @order.update(status: 'paid')
+      redirect_to order_path(@order), notice: 'Paiement réussi et commande mise à jour.'
+    else
+      redirect_to orders_path, alert: 'Paiement non réussi, commande non mise à jour.'
+    end
   end
-end
 
   def cancel
-    # Logique à ajouter en cas d'annulation
+    
   end
+
 end
