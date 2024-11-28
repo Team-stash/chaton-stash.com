@@ -294,12 +294,16 @@ main {
 }
 
 .item-card {
-  background-color: #f0f0f0; 
+  background-color: white; 
   border-radius: 10px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3); 
   overflow: hidden;
   text-align: center;
   transition: transform 0.2s; 
+  width: 90%; 
+  max-width: 800px; 
+  margin: 0 auto; 
+  padding: 20px; 
 }
 
 .item-image {
@@ -320,6 +324,22 @@ main {
 
 .item-info a:hover {
   color: #8aa7b3;
+}
+
+.item-card table {
+  width: 80%; 
+  margin: 20px auto; 
+  border-collapse: collapse;
+}
+
+.item-card th, .item-card td {
+  padding: 10px; 
+  border: 1px solid black; 
+  text-align: center; 
+}
+
+.item-card .btn {
+  margin: 10px; 
 }
 
 

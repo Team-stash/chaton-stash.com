@@ -1,34 +1,38 @@
-<h1>Votre Panier</h1>
+<div class= "item-card">
+  <h1>Votre Panier</h1>
 
-<% if @cart_items.any? %>
-  <table>
-    <thead>
-      <tr>
-        <th>Produit</th>
-        <th>Prix</th>
-        <%# <th>Quantité</th> %>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @cart_items.each do |cart_item| %>
+  <% if @cart_items.any? %>
+    <table>
+      <thead>
         <tr>
-          <td><%= cart_item.item.name %></td>
-          <td><%= number_to_currency(cart_item.item.price) %></td>
-          <td>
-            <%= button_to 'Retirer', cart_path(cart_item_id: cart_item.id), method: :patch, class: 'btn btn-danger btn-sm', data: { confirm: 'Êtes-vous sûr ?' } %>
-          </td>
+          <th>Produit</th>
+          <th>Prix</th>
+          <!-- <th>Quantité</th> -->
+          <th>Actions</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
 
-  <div class="mt-4">
-    <h3>Total : <%= number_to_currency(@total_price) %></h3>
-  </div>
 
-  <%= button_to 'Passer commande', create_order_path, method: :post, class: 'btn btn-primary' %>
-  <%= button_to 'Vider le panier', cart_path, method: :delete, class: 'btn btn-danger', data: { confirm: 'Êtes-vous sûr de vouloir vider le panier ?' } %>
-<% else %>
-  <p>Votre panier est vide.</p>
-<% end %>
+        <% @cart_items.each do |cart_item| %>
+
+          <tr>
+            <td><%= cart_item.item.name %></td>
+            <td><%= number_to_currency(cart_item.item.price) %></td>
+            <td>
+              <%= button_to 'Retirer', cart_path(cart_item_id: cart_item.id), method: :patch, class: 'button-link', data: { confirm: 'Êtes-vous sûr ?' } %>
+            </td>
+          </tr>
+        <% end %>
+
+    </table>
+
+
+      <h3>Total : <%= number_to_currency(@total_price) %></h3>
+
+    <%= button_to 'Passer commande', orders_path, method: :post, class: 'button-link' %> 
+    <br>
+    <%= button_to 'Vider le panier', cart_path, method: :delete, class: 'button-link', data: { confirm: 'Êtes-vous sûr de vouloir vider le panier ?' } %>
+  <% else %>
+    <p>Votre panier est vide.</p>
+  <% end %>
+</div>
