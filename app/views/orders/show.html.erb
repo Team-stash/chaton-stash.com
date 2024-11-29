@@ -35,4 +35,4 @@
 
 <%# Boutons de navigation ou actions supplémentaires %>
 <%= link_to 'Retour à mes commandes', orders_path, class: 'btn btn-primary' %>
-<%= button_to 'Paiement', checkout_path, class: 'btn btn-secondary' %>
+<%= button_to "Payer maintenant", checkout_create_path(order_id: @order.id, total: @order.total_price), class: "btn btn-primary", data: { turbo: false } %>

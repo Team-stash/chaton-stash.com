@@ -1,36 +1,35 @@
 Rails.application.routes.draw do
 
+  
   namespace :admin do
     get 'dashboard', to: 'dashboard#index'
     resources :users
     resources :items
   end
 
+  
+  resource :session, only: %i[new create destroy]
+  resource :registration, only: %i[new create]
+  resources :users
+  resources :items, only: [:index, :show]
+  resources :passwords, param: :token
+  
+  resources :pages
 
+  resource :cart, only: [:show, :update, :destroy] do
+    post 'add_item/:item_id', to: 'carts#add_item', as: 'add_item'
+  end
 
-resource :session, only: %i[new create destroy]
-resource :registration, only: %i[new create]
-resources :users
-resources :items, only: [:index, :show]
-resources :passwords, param: :token
-resources :pages
+  scope '/checkout' do
+    post 'create', to: 'checkout#create', as: 'checkout_create'
+    get 'success', to: 'checkout#success', as: 'checkout_success'
+    get 'cancel', to: 'checkout#cancel', as: 'checkout_cancel'
+  end
 
-resource :cart, only: [:show, :update, :destroy] do
-  post 'add_item/:item_id', to: 'carts#add_item', as: 'add_item'
-end
-
-  resources :orders, only: [:index, :show, :create]
 
   post 'create_order', to: 'orders#create', as: 'create_order'
-
-  # resources :orders, only: [:index, :show, :create] do
-  #   collection do
-  #     post 'create', action: :create, as: 'create_order'
-  #   end
-  # end
   
-
-  resources :checkout
+  resources :orders, only: [:index, :create, :show]
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
