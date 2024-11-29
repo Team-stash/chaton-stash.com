@@ -128,3 +128,8 @@ L'application est déployée sur fly.io (lien à venir)
 
 ### Screenshots et démo
 
+### Productions
+Fly.io  https://chaton-stash-com.fly.dev/
+Heroku https://aqueous-waters-98680-3ff1ba7027e4.herokuapp.com/
+Ionos http://87.106.173.45/
+
