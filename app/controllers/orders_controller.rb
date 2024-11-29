@@ -9,6 +9,8 @@ class OrdersController < ApplicationController
   def show
     # @order = Current.session.user.orders.find(params[:id])
     @order = Order.find(params[:id])
+
+
   end
 
   # Créer une commande à partir du panier

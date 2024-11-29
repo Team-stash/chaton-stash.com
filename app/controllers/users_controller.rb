@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+before_action :set_order
 
   def index
     @users = User.all
@@ -46,6 +46,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def set_order
+    @orders = Current.session.user.orders
+  end
 
   def user_params
     params.require(:user).permit(:email_address, :password, :password_confirmation,  :first_name, :last_name, :role)

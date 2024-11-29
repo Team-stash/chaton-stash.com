@@ -342,4 +342,207 @@ main {
   margin: 10px; 
 }
 
+/* ABOUT PAGE */ 
+.about-container {
+  max-width: 1400px; 
+  margin: 0 auto; 
+  background-color: #eaf4f9; 
+  padding: 20px 60px; 
+  border-radius: 15px; 
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+  height: auto; 
+  max-height: 80vh; 
+  overflow-y: auto; 
+}
 
+.about-container h1 {
+  text-align: center;
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.about-container h2 {
+  font-size: 28px;
+  color: #555;
+  margin-top: 20px;
+}
+
+.about-container p {
+  font-size: 18px;
+  color: #666;
+  line-height: 1.8;
+  margin-bottom: 10px;
+}
+
+.item-card {
+  background-color: white; 
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3); 
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.2s; 
+  width: 90%; 
+  max-width: 800px; 
+  margin: 0 auto; 
+  padding: 20px; 
+}
+
+.about-container ul li {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.about-container ul {
+  list-style-type: disc;
+  padding-left: 30px;
+  margin: 20px 0;
+}
+
+.item-info {
+  padding: 10px;
+}
+
+.item-info a {
+  text-decoration: none;
+  color: black
+}
+
+.item-info a:hover {
+  color: #8aa7b3;
+}
+
+/* USERS PAGE */
+.users-container {
+  max-width: 1000px;
+  margin: 50px auto;
+  background-color: #f9ece8;
+  padding: 30px 50px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.users-container h2 {
+  color: black;
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.users-table th,
+.users-table td {
+  text-align: left;
+  padding: 12px 15px;
+  border-bottom: 1px solid #ddd;
+  font-size: 18px;
+  color: black;
+}
+
+.users-table th {
+  background-color: #f1c5c1;
+  font-weight: bold;
+}
+
+.users-table tr:nth-child(even) {
+  background-color: #fdecea;
+}
+
+.users-table tr:hover {
+  background-color: #f9d6d2;
+}
+
+.user-action-links a {
+  color: #007bff;
+  text-decoration: none;
+  margin-right: 15px;
+}
+
+.user-action-links a:hover {
+  text-decoration: underline;
+}
+
+.pagination {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.pagination a {
+  padding: 8px 12px;
+  background-color: #f1c5c1;
+  color: black;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.pagination a:hover {
+  background-color: #f9d6d2;
+}
+
+.pagination .current {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* CONTACT PAGE */
+.contact-container {
+  max-width: 900px;
+  margin: 50px auto;
+  background-color: #f9ece8;
+  padding: 0 120px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.contact-container h2 {
+  color: black;
+  font-size: 44px;
+  margin-bottom: 20px;
+}
+
+.contact-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 50px;
+}
+
+.contact-column {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  color: black;
+  font-size: 18px;
+}
+
+.contact-icon {
+  font-size: 50px;
+  color: black;
+}
+
+.contact-text {
+  font-size: 30px;
+  color: black;
+}
+
+.contact-link {
+  text-decoration: none;
+}
+
+.contact-link:hover {
+  text-decoration: underline;
+}
