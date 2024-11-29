@@ -1,1 +1,45 @@
-<h1>Je suis PROFILE D'UN USER</h1>
+<div class="profile-container">
+  <h1>Profil Utilisateur</h1>
+
+  <section class="orders-section">
+    <h2>Vos commandes</h2>
+    <% if @orders.any? %>
+      <ul>
+        <% @orders.each do |order| %>
+          <li>
+            Commande n°<%= order.id %> - Total : <%= order.total_price %>€ - Passée le <%= order.created_at.strftime("%d/%m/%Y") %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>Aucune commande passée pour l'instant.</p>
+    <% end %>
+  </section>
+
+  <section class="edit-section">
+    <h2>Modifier vos informations</h2>
+    <%= form_with(model: @user, local: true) do |f| %>
+      <div>
+        <%= f.label :first_name, "Prénom" %>
+        <%= f.text_field :first_name %>
+      </div>
+
+      <div>
+        <%= f.label :last_name, "Nom" %>
+        <%= f.text_field :last_name %>
+      </div>
+
+      <div>
+        <%= f.label :email, "Email" %>
+        <%= f.email_field :email %>
+      </div>
+
+      <div>
+        <%= f.label :address, "Adresse" %>
+        <%= f.text_field :address %>
+      </div>
+
+      <%= f.submit "Mettre à jour" %>
+    <% end %>
+  </section>
+</div>
