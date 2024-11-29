@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  allow_unauthenticated_access only: %i[ new show create ]
+before_action :set_order
+
   def index
     @users = User.all
   end
@@ -40,9 +41,17 @@ class UsersController < ApplicationController
     redirect_to users_path, notice: "Utilisateur supprimé avec succès."
   end
 
+  def admin?
+    is_admin
+  end
+
   private
 
+  def set_order
+    @orders = Current.session.user.orders
+  end
+
   def user_params
-    params.require(:user).permit(:email_address, :password, :password_confirmation,  :first_name, :last_name)
+    params.require(:user).permit(:email_address, :password, :password_confirmation,  :first_name, :last_name, :role)
   end
 end
